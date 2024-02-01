@@ -1,29 +1,29 @@
 package com.prottoy.model;
+import jakarta.persistence.*;
+import lombok.*;
 
-public class User {
+import java.io.Serializable;
+
+@Getter
+@Setter
+@Builder
+@ToString
+@Entity
+@Table(name = "TBL_USER")
+@AllArgsConstructor
+public class User implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column
     private String name;
-    private Integer age;
+    @Column
+    private String email;
+    @Column
+    private String password;
+//    @Column
+//    @Enumerated(EnumType.STRING)
+//    private UserRole role;
 
-    public User () {}
-
-    public User(String name, Integer age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    public User() {}
 }

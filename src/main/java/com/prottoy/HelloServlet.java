@@ -15,9 +15,12 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        Integer age = Integer.parseInt(req.getParameter("age"));
-        User user = new User(name, age);
+        String email = req.getParameter("email");
+        Long id=Long.parseLong(req.getParameter("id"));
+        String password=req.getParameter("password");
+        User user = new User(id,name, email,password);
         req.setAttribute("user", user);
+        System.out.println(user.getEmail());
         req.getRequestDispatcher("hello.jsp").forward(req, resp);
     }
 }
